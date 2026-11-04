@@ -10,11 +10,13 @@
 		"sourceMap": true,
 		"outDir": "./dist",
 		"baseUrl": "./",
+		"ignoreDeprecations": "6.0",
 		"paths": {
 			"@/*": ["src/*"],
 			"@prisma/generated": ["prisma/generated"],
 			"@prisma/generated/*": ["prisma/generated/*"]
 		},
+		"esModuleInterop": true,
 		"incremental": true,
 		"skipLibCheck": true,
 		"strictNullChecks": false,
@@ -22,11 +24,9 @@
 		"strictBindCallApply": false,
 		"forceConsistentCasingInFileNames": false,
 		"noFallthroughCasesInSwitch": false,
-  "jsx": "react-jsx",
-  "moduleResolution": "bundler",
-  "resolveJsonModule": true,
-  "types": [
-   "node"
-  ]
+		"jsx": "react-jsx",
+		"moduleResolution": "bundler",
+		"resolveJsonModule": true,
+		"types": ["node"]
 	}
 }
