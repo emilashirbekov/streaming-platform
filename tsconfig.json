@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"module": "preserve",
+		"module": "commonjs",
 		"declaration": true,
 		"removeComments": true,
 		"emitDecoratorMetadata": true,
@@ -10,7 +10,7 @@
 		"sourceMap": true,
 		"outDir": "./dist",
 		"baseUrl": "./",
-		"ignoreDeprecations": "6.0",
+		//"ignoreDeprecations": "6.0",
 		"paths": {
 			"@/*": ["src/*"],
 			"@prisma/generated": ["prisma/generated"],
@@ -25,7 +25,7 @@
 		"forceConsistentCasingInFileNames": false,
 		"noFallthroughCasesInSwitch": false,
 		"jsx": "react-jsx",
-		"moduleResolution": "bundler",
+		"moduleResolution": "node",
 		"resolveJsonModule": true,
 		"types": ["node"]
 	}

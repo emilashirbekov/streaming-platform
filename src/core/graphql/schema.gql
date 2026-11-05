@@ -1,0 +1,19 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Query {
+  findAllUsers: [UserModel!]!
+}
+
+type UserModel {
+  avatar: String
+  bio: String
+  createdAt: ID!
+  displayName: String!
+  email: String!
+  id: ID!
+  password: String!
+  updatedAt: ID!
+  username: String!
+}
