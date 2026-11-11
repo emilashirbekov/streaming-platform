@@ -2,8 +2,25 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input CreateUserInput {
+  email: String!
+  password: String!
+  username: String!
+}
+
+input LoginInput {
+  login: String!
+  password: String!
+}
+
+type Mutation {
+  createUser(data: CreateUserInput!): Boolean!
+  login(data: LoginInput!): UserModel!
+  logout: Boolean!
+}
+
 type Query {
-  findAllUsers: [UserModel!]!
+  findProfile: UserModel!
 }
 
 type UserModel {
