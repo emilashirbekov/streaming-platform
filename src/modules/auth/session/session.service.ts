@@ -29,7 +29,7 @@ export class SessionService {
 		if (!userId)
 			throw new NotFoundException('Пользователь не обнаружен в сессии')
 
-		const keys = await this.redisService.get('*')
+		const keys = await this.redisService.keys('*')
 		const userSessions = []
 
 		for (const key of keys) {
@@ -48,14 +48,14 @@ export class SessionService {
 
 		userSessions.sort((a, b) => a.createdAt - b.createdAt)
 
-		return userSessions.filter(session => session.id === req.session.id)
+		return userSessions.filter(session => session.id !== req.session.id)
 	}
 
 	public async findCurrent(req: Request) {
 		const sessionId = req.session.id
 
 		const sessionData = await this.redisService.get(
-			`${this.configService.getOrThrow<string>('SESSION_FOLDER')}:${sessionId}`
+			`${this.configService.getOrThrow<string>('SESSION_FOLDER')}${sessionId}`
 		)
 
 		const session = JSON.parse(sessionData)
@@ -133,7 +133,7 @@ export class SessionService {
 		return true
 	}
 
-	public async clearSession(req: Request, id: string) {
+	public async remove(req: Request, id: string) {
 		if (req.session.id === id)
 			throw new ConflictException('Текущую сессию удалить нельзя')
 
