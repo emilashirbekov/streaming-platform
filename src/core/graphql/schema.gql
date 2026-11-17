@@ -32,6 +32,7 @@ type Mutation {
   login(data: LoginInput!): UserModel!
   logout: Boolean!
   removeSession(id: String!): Boolean!
+  verifyAccount(data: VerificationInput!): UserModel!
 }
 
 type Query {
@@ -60,7 +61,13 @@ type UserModel {
   displayName: String!
   email: String!
   id: ID!
+  isEmailVerified: Boolean!
+  isVerified: Boolean!
   password: String!
   updatedAt: ID!
   username: String!
+}
+
+input VerificationInput {
+  token: String!
 }

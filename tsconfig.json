@@ -24,7 +24,7 @@
 		"strictBindCallApply": false,
 		"forceConsistentCasingInFileNames": false,
 		"noFallthroughCasesInSwitch": false,
-		"jsx": "react-jsx",
+		"jsx": "react",
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
 		"types": ["node"]
