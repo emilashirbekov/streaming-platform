@@ -1051,6 +1051,8 @@ export namespace Prisma {
     avatar: string | null
     isVerified: boolean | null
     isEmailVerified: boolean | null
+    isTotpEnabled: boolean | null
+    totpSecret: string | null
     bio: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -1065,6 +1067,8 @@ export namespace Prisma {
     avatar: string | null
     isVerified: boolean | null
     isEmailVerified: boolean | null
+    isTotpEnabled: boolean | null
+    totpSecret: string | null
     bio: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -1079,6 +1083,8 @@ export namespace Prisma {
     avatar: number
     isVerified: number
     isEmailVerified: number
+    isTotpEnabled: number
+    totpSecret: number
     bio: number
     createdAt: number
     updatedAt: number
@@ -1095,6 +1101,8 @@ export namespace Prisma {
     avatar?: true
     isVerified?: true
     isEmailVerified?: true
+    isTotpEnabled?: true
+    totpSecret?: true
     bio?: true
     createdAt?: true
     updatedAt?: true
@@ -1109,6 +1117,8 @@ export namespace Prisma {
     avatar?: true
     isVerified?: true
     isEmailVerified?: true
+    isTotpEnabled?: true
+    totpSecret?: true
     bio?: true
     createdAt?: true
     updatedAt?: true
@@ -1123,6 +1133,8 @@ export namespace Prisma {
     avatar?: true
     isVerified?: true
     isEmailVerified?: true
+    isTotpEnabled?: true
+    totpSecret?: true
     bio?: true
     createdAt?: true
     updatedAt?: true
@@ -1210,6 +1222,8 @@ export namespace Prisma {
     avatar: string | null
     isVerified: boolean
     isEmailVerified: boolean
+    isTotpEnabled: boolean
+    totpSecret: string | null
     bio: string | null
     createdAt: Date
     updatedAt: Date
@@ -1241,6 +1255,8 @@ export namespace Prisma {
     avatar?: boolean
     isVerified?: boolean
     isEmailVerified?: boolean
+    isTotpEnabled?: boolean
+    totpSecret?: boolean
     bio?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -1257,6 +1273,8 @@ export namespace Prisma {
     avatar?: boolean
     isVerified?: boolean
     isEmailVerified?: boolean
+    isTotpEnabled?: boolean
+    totpSecret?: boolean
     bio?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -1271,6 +1289,8 @@ export namespace Prisma {
     avatar?: boolean
     isVerified?: boolean
     isEmailVerified?: boolean
+    isTotpEnabled?: boolean
+    totpSecret?: boolean
     bio?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -1285,12 +1305,14 @@ export namespace Prisma {
     avatar?: boolean
     isVerified?: boolean
     isEmailVerified?: boolean
+    isTotpEnabled?: boolean
+    totpSecret?: boolean
     bio?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "username" | "displayName" | "avatar" | "isVerified" | "isEmailVerified" | "bio" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "username" | "displayName" | "avatar" | "isVerified" | "isEmailVerified" | "isTotpEnabled" | "totpSecret" | "bio" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tokens?: boolean | User$tokensArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1312,6 +1334,8 @@ export namespace Prisma {
       avatar: string | null
       isVerified: boolean
       isEmailVerified: boolean
+      isTotpEnabled: boolean
+      totpSecret: string | null
       bio: string | null
       createdAt: Date
       updatedAt: Date
@@ -1747,6 +1771,8 @@ export namespace Prisma {
     readonly avatar: FieldRef<"User", 'String'>
     readonly isVerified: FieldRef<"User", 'Boolean'>
     readonly isEmailVerified: FieldRef<"User", 'Boolean'>
+    readonly isTotpEnabled: FieldRef<"User", 'Boolean'>
+    readonly totpSecret: FieldRef<"User", 'String'>
     readonly bio: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
@@ -3316,6 +3342,8 @@ export namespace Prisma {
     avatar: 'avatar',
     isVerified: 'isVerified',
     isEmailVerified: 'isEmailVerified',
+    isTotpEnabled: 'isTotpEnabled',
+    totpSecret: 'totpSecret',
     bio: 'bio',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -3444,6 +3472,8 @@ export namespace Prisma {
     avatar?: StringNullableFilter<"User"> | string | null
     isVerified?: BoolFilter<"User"> | boolean
     isEmailVerified?: BoolFilter<"User"> | boolean
+    isTotpEnabled?: BoolFilter<"User"> | boolean
+    totpSecret?: StringNullableFilter<"User"> | string | null
     bio?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
@@ -3459,6 +3489,8 @@ export namespace Prisma {
     avatar?: SortOrderInput | SortOrder
     isVerified?: SortOrder
     isEmailVerified?: SortOrder
+    isTotpEnabled?: SortOrder
+    totpSecret?: SortOrderInput | SortOrder
     bio?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -3477,6 +3509,8 @@ export namespace Prisma {
     avatar?: StringNullableFilter<"User"> | string | null
     isVerified?: BoolFilter<"User"> | boolean
     isEmailVerified?: BoolFilter<"User"> | boolean
+    isTotpEnabled?: BoolFilter<"User"> | boolean
+    totpSecret?: StringNullableFilter<"User"> | string | null
     bio?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
@@ -3492,6 +3526,8 @@ export namespace Prisma {
     avatar?: SortOrderInput | SortOrder
     isVerified?: SortOrder
     isEmailVerified?: SortOrder
+    isTotpEnabled?: SortOrder
+    totpSecret?: SortOrderInput | SortOrder
     bio?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -3512,6 +3548,8 @@ export namespace Prisma {
     avatar?: StringNullableWithAggregatesFilter<"User"> | string | null
     isVerified?: BoolWithAggregatesFilter<"User"> | boolean
     isEmailVerified?: BoolWithAggregatesFilter<"User"> | boolean
+    isTotpEnabled?: BoolWithAggregatesFilter<"User"> | boolean
+    totpSecret?: StringNullableWithAggregatesFilter<"User"> | string | null
     bio?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
@@ -3591,6 +3629,8 @@ export namespace Prisma {
     avatar?: string | null
     isVerified?: boolean
     isEmailVerified?: boolean
+    isTotpEnabled?: boolean
+    totpSecret?: string | null
     bio?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -3606,6 +3646,8 @@ export namespace Prisma {
     avatar?: string | null
     isVerified?: boolean
     isEmailVerified?: boolean
+    isTotpEnabled?: boolean
+    totpSecret?: string | null
     bio?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -3621,6 +3663,8 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
+    isTotpEnabled?: BoolFieldUpdateOperationsInput | boolean
+    totpSecret?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -3636,6 +3680,8 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
+    isTotpEnabled?: BoolFieldUpdateOperationsInput | boolean
+    totpSecret?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -3651,6 +3697,8 @@ export namespace Prisma {
     avatar?: string | null
     isVerified?: boolean
     isEmailVerified?: boolean
+    isTotpEnabled?: boolean
+    totpSecret?: string | null
     bio?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -3665,6 +3713,8 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
+    isTotpEnabled?: BoolFieldUpdateOperationsInput | boolean
+    totpSecret?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -3679,6 +3729,8 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
+    isTotpEnabled?: BoolFieldUpdateOperationsInput | boolean
+    totpSecret?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -3823,6 +3875,8 @@ export namespace Prisma {
     avatar?: SortOrder
     isVerified?: SortOrder
     isEmailVerified?: SortOrder
+    isTotpEnabled?: SortOrder
+    totpSecret?: SortOrder
     bio?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -3837,6 +3891,8 @@ export namespace Prisma {
     avatar?: SortOrder
     isVerified?: SortOrder
     isEmailVerified?: SortOrder
+    isTotpEnabled?: SortOrder
+    totpSecret?: SortOrder
     bio?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -3851,6 +3907,8 @@ export namespace Prisma {
     avatar?: SortOrder
     isVerified?: SortOrder
     isEmailVerified?: SortOrder
+    isTotpEnabled?: SortOrder
+    totpSecret?: SortOrder
     bio?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -4249,6 +4307,8 @@ export namespace Prisma {
     avatar?: string | null
     isVerified?: boolean
     isEmailVerified?: boolean
+    isTotpEnabled?: boolean
+    totpSecret?: string | null
     bio?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -4263,6 +4323,8 @@ export namespace Prisma {
     avatar?: string | null
     isVerified?: boolean
     isEmailVerified?: boolean
+    isTotpEnabled?: boolean
+    totpSecret?: string | null
     bio?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -4293,6 +4355,8 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
+    isTotpEnabled?: BoolFieldUpdateOperationsInput | boolean
+    totpSecret?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4307,6 +4371,8 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
+    isTotpEnabled?: BoolFieldUpdateOperationsInput | boolean
+    totpSecret?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
