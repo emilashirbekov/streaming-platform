@@ -1,9 +1,12 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql'
 
+import { User } from '@/generated/prisma'
 import { Authorization } from '@/shared/decorators/auth.decorator'
 import { Authorized } from '@/shared/decorators/authorized.decorator'
 
 import { AccountService } from './account.service'
+import { ChangeEmailInput } from './inputs/change-email.input'
+import { ChangePasswordInput } from './inputs/change-password.input'
 import { CreateUserInput } from './inputs/create-user.input'
 import { UserModel } from './models/user.model'
 
@@ -20,5 +23,23 @@ export class AccountResolver {
 	@Mutation(() => Boolean, { name: 'createUser' })
 	public async create(@Args('data') input: CreateUserInput) {
 		return this.accountService.create(input)
+	}
+
+	@Authorization()
+	@Mutation(() => Boolean, { name: 'changeEmail' })
+	public async changeEmail(
+		@Args('data') input: ChangeEmailInput,
+		@Authorized() user: User
+	) {
+		return this.accountService.changeEmil(user, input)
+	}
+
+	@Authorization()
+	@Mutation(() => Boolean, { name: 'changePassword' })
+	public async changePassword(
+		@Args('data') input: ChangePasswordInput,
+		@Authorized() user: User
+	) {
+		return this.accountService.changePassword(user, input)
 	}
 }
