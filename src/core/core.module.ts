@@ -12,6 +12,7 @@ import { TotpModule } from '@/modules/auth/totp/totp.module'
 import { VerificationModule } from '@/modules/auth/verification/verification.module'
 import { CronModule } from '@/modules/cron/cron.module'
 import { MailModule } from '@/modules/libs/mail/mail.module'
+import { StreamModule } from '@/modules/stream/stream.module'
 import { IS_DEV } from '@/shared/utils/is_dev.util'
 
 import { getGraphQLConfig } from './config/graphql.config'
@@ -40,7 +41,8 @@ import { RedisModule } from './redis/redis.module'
 		TotpModule,
 		DeactivateModule,
 		CronModule,
-		ProfileModule
+		ProfileModule,
+		StreamModule
 	]
 })
 export class CoreModule {}

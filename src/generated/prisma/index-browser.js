@@ -148,6 +148,19 @@ exports.Prisma.TokenScalarFieldEnum = {
   userId: 'userId'
 };
 
+exports.Prisma.StreamScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  thumbnailUrl: 'thumbnailUrl',
+  ingressId: 'ingressId',
+  serverUrl: 'serverUrl',
+  streamKey: 'streamKey',
+  isLive: 'isLive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId'
+};
+
 exports.Prisma.SocialLinkScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -156,7 +169,8 @@ exports.Prisma.SocialLinkScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   userId: 'userId',
-  tokenId: 'tokenId'
+  tokenId: 'tokenId',
+  streamId: 'streamId'
 };
 
 exports.Prisma.SortOrder = {
@@ -182,6 +196,7 @@ exports.TokenType = exports.$Enums.TokenType = {
 exports.Prisma.ModelName = {
   User: 'User',
   Token: 'Token',
+  Stream: 'Stream',
   SocialLink: 'SocialLink'
 };
 

@@ -177,7 +177,7 @@ export class ProfileService {
 	}
 
 	public async findSocialLinks(user: User) {
-		const socialLinks = await this.prismaService.socialLink.findMany({
+		await this.prismaService.socialLink.findMany({
 			where: {
 				userId: user.id
 			},
