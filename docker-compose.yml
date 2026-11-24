@@ -39,10 +39,26 @@ services:
     networks:
       - server
 
+  storage:
+    image: chrislusf/seaweedfs:latest
+    container_name: storage
+    command: mini -dir=/data
+    environment:
+      AWS_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID:-dev-access-key}
+      AWS_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY:-dev-secret-key}
+      S3_BUCKET: ${S3_BUCKET:-streaming-platform}
+    ports:
+      - "8333:8333"
+    volumes:
+      - storage_data:/data
+    networks:
+      - server
+
 volumes:
   postgres_data:
   redis_data:
   redisinsight:
+  storage_data:
 
 networks:
   server:

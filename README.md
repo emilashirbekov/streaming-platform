@@ -45,6 +45,21 @@ $ yarn run start:dev
 $ yarn run start:prod
 ```
 
+## Local file storage
+
+The project can use SeaweedFS as a local S3-compatible object store. It runs on your machine and does not require a paid storage account.
+
+1. Add the settings from `.env.example` to your existing `.env` file.
+2. Start the storage container:
+
+   ```bash
+   docker compose up -d storage
+   ```
+
+3. Start the NestJS app with `yarn start:dev` as usual.
+
+The S3 API is available at `http://localhost:8333`. Files are kept in the Docker volume `storage_data`, so they survive container restarts. Avoid `docker compose down -v` if you want to keep them; that command removes the volume too.
+
 ## Test
 
 ```bash
