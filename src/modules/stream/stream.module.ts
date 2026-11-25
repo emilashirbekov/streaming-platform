@@ -1,8 +1,13 @@
-import { Module } from '@nestjs/common';
-import { StreamService } from './stream.service';
-import { StreamResolver } from './stream.resolver';
+import { Module } from '@nestjs/common'
+
+import { StorageModule } from '../libs/mail/storage/storage.module'
+
+import { StreamResolver } from './stream.resolver'
+import { StreamService } from './stream.service'
 
 @Module({
-  providers: [StreamResolver, StreamService],
+	imports: [StorageModule],
+
+	providers: [StreamResolver, StreamService]
 })
 export class StreamModule {}

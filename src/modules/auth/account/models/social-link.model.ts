@@ -28,4 +28,7 @@ export class SocialLinkModel implements SocialLink {
 
 	@Field(() => String, { nullable: true })
 	public tokenId: string | null
+
+	@Field(() => String, { nullable: true })
+	public streamId: string | null
 }
