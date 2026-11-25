@@ -57,6 +57,7 @@
 		"hi-base32": "^0.7.0",
 		"i18n-iso-countries": "^7.14.0",
 		"ioredis": "^6.0.0",
+		"livekit-server-sdk": "1.2.7",
 		"nodemailer": "^10.6.0",
 		"otpauth": "^9.6.0",
 		"pg": "^8.23.1",
