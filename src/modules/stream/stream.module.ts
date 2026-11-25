@@ -4,9 +4,10 @@ import { StorageModule } from '../libs/mail/storage/storage.module'
 
 import { StreamResolver } from './stream.resolver'
 import { StreamService } from './stream.service'
+import { IngressModule } from './ingress/ingress.module';
 
 @Module({
-	imports: [StorageModule],
+	imports: [StorageModule, IngressModule],
 
 	providers: [StreamResolver, StreamService]
 })

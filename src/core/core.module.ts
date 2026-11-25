@@ -13,6 +13,7 @@ import { VerificationModule } from '@/modules/auth/verification/verification.mod
 import { CronModule } from '@/modules/cron/cron.module'
 import { LivekitModule } from '@/modules/libs/livekit/livekit.module'
 import { MailModule } from '@/modules/libs/mail/mail.module'
+import { IngressModule } from '@/modules/stream/ingress/ingress.module'
 import { StreamModule } from '@/modules/stream/stream.module'
 import { IS_DEV } from '@/shared/utils/is_dev.util'
 
@@ -49,7 +50,8 @@ import { RedisModule } from './redis/redis.module'
 		DeactivateModule,
 		CronModule,
 		ProfileModule,
-		StreamModule
+		StreamModule,
+		IngressModule
 	]
 })
 export class CoreModule {}
