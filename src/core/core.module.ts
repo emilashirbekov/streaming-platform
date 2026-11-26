@@ -15,6 +15,7 @@ import { LivekitModule } from '@/modules/libs/livekit/livekit.module'
 import { MailModule } from '@/modules/libs/mail/mail.module'
 import { IngressModule } from '@/modules/stream/ingress/ingress.module'
 import { StreamModule } from '@/modules/stream/stream.module'
+import { WebhookModule } from '@/modules/webhook/webhook.module'
 import { IS_DEV } from '@/shared/utils/is_dev.util'
 
 import { getGraphQLConfig } from './config/graphql.config'
@@ -51,7 +52,8 @@ import { RedisModule } from './redis/redis.module'
 		CronModule,
 		ProfileModule,
 		StreamModule,
-		IngressModule
+		IngressModule,
+		WebhookModule
 	]
 })
 export class CoreModule {}
