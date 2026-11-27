@@ -7,6 +7,17 @@ type AuthModel {
   user: UserModel
 }
 
+type CategoryModel {
+  createdAt: DateTime!
+  description: String
+  id: ID!
+  slug: String!
+  streams: [StreamModel!]!
+  thumbnailUrl: String
+  title: String!
+  updatedAt: DateTime!
+}
+
 input ChangeEmailInput {
   email: String!
 }
@@ -60,6 +71,15 @@ input FilterInput {
   take: Float
 }
 
+input GenerateStreamToken {
+  channelId: String!
+  userId: String!
+}
+
+type GenerateStreamTokenModel {
+  token: String!
+}
+
 type LocationModel {
   city: String!
   country: String!
@@ -87,6 +107,7 @@ type Mutation {
   deactivateAccount(data: DeactivateAccountInput!): AuthModel!
   disableTotp: Boolean!
   enableTotp(data: EnableTotpInput!): Boolean!
+  generateStreamToken(data: GenerateStreamToken!): GenerateStreamTokenModel!
   login(data: LoginInput!): AuthModel!
   logout: Boolean!
   newPassword(data: NewPasswordInput!): Boolean!
@@ -107,9 +128,12 @@ input NewPasswordInput {
 }
 
 type Query {
+  findAllCategories: [CategoryModel!]!
   findAllStreams(filter: FilterInput!): [StreamModel!]!
+  findCategory(slug: String!): CategoryModel!
   findCurrentSession: SessionModel!
   findProfile: UserModel!
+  findRandomCategories: [CategoryModel!]!
   findRandomStremas: [StreamModel!]!
   findSessionByUser: [SessionModel!]!
   findSocialLinks: Boolean!
@@ -151,6 +175,8 @@ type SocialLinkModel {
 }
 
 type StreamModel {
+  category: CategoryModel!
+  categoryId: String!
   createdAt: ID!
   id: ID!
   ingressId: String

@@ -1,4 +1,6 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, NotFoundException } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
+import { AccessToken } from 'livekit-server-sdk'
 import sharp from 'sharp'
 
 import { PrismaService } from '@/core/prisma/prisma.service'
@@ -9,12 +11,14 @@ import { StorageService } from '../libs/mail/storage/storage.service'
 
 import { ChangeStreamInfoInput } from './inputs/change-stream-info.input'
 import { FilterInput } from './inputs/filter.inputs'
+import { GenerateStreamToken } from './inputs/generate-stream-token.input'
 
 @Injectable()
 export class StreamService {
 	public constructor(
 		private readonly prismaService: PrismaService,
-		private readonly storageService: StorageService
+		private readonly storageService: StorageService,
+		private readonly configService: ConfigService
 	) {}
 
 	public async findAll(input: FilterInput) {
@@ -34,7 +38,8 @@ export class StreamService {
 				...whereClause
 			},
 			include: {
-				user: true
+				user: true,
+				category: true
 			},
 			orderBy: {
 				createdAt: 'desc'
@@ -66,7 +71,8 @@ export class StreamService {
 					isDeactivated: false
 				}
 			},
-			include: { user: true },
+
+			include: { user: true, category: true },
 			take: total,
 			skip: 0
 		})
@@ -82,7 +88,12 @@ export class StreamService {
 				userId: user.id
 			},
 			data: {
-				title
+				title,
+				category: {
+					connect: {
+						id: categoryId
+					}
+				}
 			}
 		})
 
@@ -175,6 +186,51 @@ export class StreamService {
 		})
 
 		return true
+	}
+
+	public async generateStreamToken(input: GenerateStreamToken) {
+		const { userId, channelId } = input
+
+		let self: { id: string; username: string }
+
+		const user = await this.prismaService.user.findUnique({
+			where: {
+				id: userId
+			}
+		})
+
+		if (user) {
+			self = { id: userId, username: (await user).username }
+		} else {
+			self = {
+				id: userId,
+				username: `Зритель ${Math.floor(Math.random() * 100000)}`
+			}
+		}
+
+		const channel = await this.prismaService.user.findUnique({
+			where: {
+				id: channelId
+			}
+		})
+
+		if (!channel) throw new NotFoundException('Канал не найден')
+
+		const isHost = self.id === channelId
+
+		const token = new AccessToken(
+			this.configService.getOrThrow<string>('LIVE_KIT_API_KEY'),
+			this.configService.getOrThrow<string>('LIVE_KIT_API_SECRET'),
+			{ identity: isHost ? `Host-${self.id}` : self.id.toString() }
+		)
+
+		token.addGrant({
+			room: channel.id,
+			roomJoin: true,
+			canPublish: false
+		})
+
+		return { token: token.toJwt() }
 	}
 
 	private async findByUserId(user: User) {
