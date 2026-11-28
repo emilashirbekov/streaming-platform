@@ -21,7 +21,8 @@
 		"postinstall": "prisma skills sync || exit 0",
 		"contract:emit": "prisma contract emit",
 		"db:push": "prisma db push",
-		"db:studio": "prisma studio"
+		"db:studio": "prisma studio",
+		"db:seed": "ts-node src/core/prisma/prisma.seed.ts"
 	},
 	"dependencies": {
 		"@apollo/server": "^5.5.1",
